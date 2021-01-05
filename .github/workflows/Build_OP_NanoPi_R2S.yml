@@ -96,8 +96,14 @@ jobs:
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+    - name: Assemble Artifact
+      run: |
+        rm -rf ./artifact/
+        mkdir -p ./artifact/
+        find ./openwrt/bin/ -name "openwrt*.img.gz" | xargs -I{} sh -c 'f=$(basename $1); zip -r -j "./artifact/${f}.zip" $1' sh {} \;
+        cp ./openwrt/.config ./artifact/
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
-        path: openwrt/bin
+        name: OpenWrt_NanoPi-R2S RK3328 v19.07
+        path: ./artifact/
