@@ -98,6 +98,7 @@ jobs:
           cp -a ../fan/. ./target/linux/rockchip/armv8/base-files/
           mkdir ./target/linux/rockchip/armv8/base-files/etc/rc.d/
           ln -s ../init.d/fa-rk3328-pwmfan ./target/linux/rockchip/armv8/base-files/etc/rc.d/S96fa-rk3328-pwmfan
+          chmod +x ./target/linux/rockchip/armv8/base-files/etc/rc.d/S96fa-rk3328-pwmfan
                   
     - name: Build firmware
       working-directory: ./openwrt
