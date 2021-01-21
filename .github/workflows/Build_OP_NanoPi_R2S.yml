@@ -7,19 +7,15 @@
 
 name: Build_NanoPi_R2S
 
-on: 
-  release:
-    types: [published]
-
+on:
   push:
-    branches: 
-      - master
-
-  #schedule:
-  #  - cron: 0 8 * * 5
-  
-  #watch:
-  #  types: [started]
+    branches: [ master ]
+    paths:
+      - '.github/workflows/Build_OP_NanoPi_R2S.yml'
+  schedule:
+    - cron: '00 05 * * 5'
+  watch:
+    types: [started]
 
 jobs:
   build:
