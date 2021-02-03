@@ -8,18 +8,14 @@
 name: Build_x86
 
 on: 
-  release:
-    types: [published]
-
-  #push:
-  #  branches: 
-  #    - master
-
-  #schedule:
-  #  - cron: 0 8 * * 5
-
-  #watch:
-  #  types: [started]
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/Build_OP_x86.yml'
+  schedule:
+    - cron: '00 05 * * 5'
+  watch:
+    types: [started]
 
 jobs:
   build:
